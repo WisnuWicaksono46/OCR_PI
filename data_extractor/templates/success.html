@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Extraction Success</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Untuk lambang pada tab browser -->
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Extraction Success</h1>
+        <div class="alert alert-success">
+            The ZIP file has been successfully extracted and Grouped<br>
+            <code>{{ folder_name_zip }}</code>
+
+        </div>
+        <!-- <div method="post" class="text-center">
+            <a href="{% url 'download_zip' %}" class="btn btn-primary" download>Download Folder</a>
+        </div> -->
+
+        <form method="post" action="{% url 'download_zip' %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary">Download Folder</button>
+        </form>
+          
+    </div>
+</body>
+</html>
