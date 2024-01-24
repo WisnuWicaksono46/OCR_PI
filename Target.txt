@@ -1,0 +1,15 @@
+If you don't want users to log in but still want to provide them with dedicated container folders each time they use your Django web app, you can generate unique folder names for each user session. Here's an approach you can follow:
+
+1. Generate Unique Session IDs: Instead of relying on user authentication, you can generate unique session IDs for each user session. Django automatically creates a session ID for each user when they access your web app.
+
+2. Create Container Folders: When a user accesses your web app, create a dedicated container folder for their session using the generated session ID. You can choose a location on your server where these session folders will reside.
+
+3. Associate Session IDs with Container Folders: Maintain a mapping between session IDs and their respective container folders. You can use a database or cache to store this mapping. When a user makes subsequent requests, retrieve their session ID from the request and use it to identify their associated container folder.
+
+4. File Uploads and Access Control: Allow users to upload files within their dedicated container folders. Implement appropriate access control mechanisms to ensure that each user can only access their own container folder and its contents. You can validate session IDs or use the mapping from step 3 to enforce this access control.
+
+5. Session Cleanup: Determine the appropriate time to clean up session folders. For example, you can delete session folders that haven't been accessed for a certain period of time or use a mechanism like session expiry. Make sure to handle any race conditions or edge cases that may arise during session cleanup.
+
+By using this approach, users can access your Django web app without requiring authentication or login. Each session will have a dedicated container folder to store their files and data. Just keep in mind that without authentication, there won't be a way to uniquely identify users between sessions, and users will only have access to their session's container folder during their current visit.
+
+Remember to consider the security implications of providing access without authentication. Take appropriate measures to ensure the privacy and security of user data and protect against potential abuse or unauthorized access to other users' container folders.
