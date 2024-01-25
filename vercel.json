@@ -7,7 +7,7 @@
 
         "use": "@vercel/python",
 
-        "config": { "maxLambdaSize": "700mb", "runtime": "python3.7" }
+        "config": { "maxLambdaSize": "5000mb", "runtime": "python3.7" }
 
     }],
 
